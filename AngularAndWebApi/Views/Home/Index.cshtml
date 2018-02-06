@@ -1,0 +1,44 @@
+﻿<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    @*<script src="~/Scripts/bootstrap.js"></script>*@
+    <script src="~/Content/bootstrap.css"></script>
+    <script src="~/Content/Site.css"></script>
+    <script src="~/AngularPart/Module.js"></script>
+    <script src="~/AngularPart/Service.js"></script>
+    <script src="~/AngularPart/Controller.js"></script>
+</head>
+
+<body data-ng-app="APIModule">
+    <h2>Items</h2>
+
+    <div class="form-group">
+        <table>
+            <tr>
+                <td><input class="form-control" id="name" placeholder="Enter name" [required="string" ] data-ng-model="name" /> </td>
+                <td><input class="form-control" id="type" placeholder="Enter type" [required="string" ] data-ng-model="type" /> </td>
+                <td><button type="button" class="btn btn-default" data-ng-click="saveItem();">add item</button> </td>
+            </tr>
+        </table>
+
+
+    </div>
+
+
+    <div id="tblItems" ng-controller="APIController">
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>Item Name (Editable)</th>
+                <th>Item Type (Editable)</th>
+            </tr>
+            <tbody>
+                <tr data-ng-repeat="item in items">
+                    <td ng-blur="updName(item,$event)" ng-dblclick="makeEditable($event)">{{item.Name}}</td>
+                    <td ng-blur="updType(item,$event)" ng-dblclick="makeEditable($event)">{{item.Type}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
