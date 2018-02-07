@@ -57,5 +57,5 @@
         }, function (error) {
             console.log('Oops! Something went wrong while deleting the data.')
         })
-    };   
+    };
 }) 

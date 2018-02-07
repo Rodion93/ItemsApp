@@ -3,11 +3,12 @@
         return $http.get('http://localhost:51020/api/items');
     }
     this.saveItems = function (item) {
+        var url = 'http://localhost:51020/api/items'
         return $http(
             {
                 method: 'post',
                 data: item,
-                url: 'http://localhost:51020/api/items'
+                url: url
             });
     }
 
@@ -21,11 +22,12 @@
     }
 
     this.deleteItem = function (itemId) {
+        var url = 'http://localhost:51020/api/items' + '/' + itemId
         return $http(
             {
                 method: 'delete',
                 data: itemId,
-                url: 'http://localhost:51020/api/items' + itemId
+                url: url
             });
     }
 });   
