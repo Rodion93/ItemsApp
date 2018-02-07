@@ -19,7 +19,7 @@
             <tr>
                 <td><input class="form-control" id="name" placeholder="Enter name" [required="string" ] data-ng-model="name" /> </td>
                 <td><input class="form-control" id="type" placeholder="Enter type" [required="string" ] data-ng-model="type" /> </td>
-                <td><button type="button" class="btn btn-default" data-ng-click="saveItem();">add item</button> </td>
+                <td><button type="submit" class="btn btn-default" data-ng-click="saveItem()">add item</button> </td>
             </tr>
         </table>
 
@@ -32,11 +32,13 @@
             <tr>
                 <th>Item Name (Editable)</th>
                 <th>Item Type (Editable)</th>
+                <th></th>
             </tr>
             <tbody>
                 <tr data-ng-repeat="item in items">
                     <td ng-blur="updName(item,$event)" ng-dblclick="makeEditable($event)">{{item.Name}}</td>
                     <td ng-blur="updType(item,$event)" ng-dblclick="makeEditable($event)">{{item.Type}}</td>
+                    <td><button class="btn btn-danger" type="submit" ng-click="dltItem(item.Id)">Delete</button></td>
                 </tr>
             </tbody>
         </table>

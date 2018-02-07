@@ -49,4 +49,13 @@
             console.log('Oops! Something went wrong while updating the data.')
         })
     };
+
+    $scope.dltItem = function (itemId) {
+        var dlt = APIService.deleteItem(itemId);
+        dlt.then(function (d) {
+            getAll();
+        }, function (error) {
+            console.log('Oops! Something went wrong while deleting the data.')
+        })
+    };   
 }) 

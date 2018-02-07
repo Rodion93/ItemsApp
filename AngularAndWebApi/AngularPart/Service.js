@@ -19,4 +19,13 @@
                 url: 'http://localhost:51020/api/items'
             });
     }
+
+    this.deleteItem = function (itemId) {
+        return $http(
+            {
+                method: 'delete',
+                data: itemId,
+                url: 'http://localhost:51020/api/items' + itemId
+            });
+    }
 });   

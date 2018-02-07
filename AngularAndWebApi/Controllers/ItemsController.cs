@@ -37,33 +37,25 @@ namespace AngularAndWebApi.Controllers
 
         // PUT: api/Items/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutItem(int id, Item item)
+        public IHttpActionResult PutItem(Item item)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return BadRequest(ModelState);
-            }
-
-            if (id != item.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(item).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ItemExists(id))
+                db.Entry(item).State = EntityState.Modified;
+                try
                 {
-                    return NotFound();
+                    db.SaveChanges();
                 }
-                else
+                catch (DbUpdateConcurrencyException)
                 {
-                    throw;
+                    if (!ItemExists(item.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
             }
 
