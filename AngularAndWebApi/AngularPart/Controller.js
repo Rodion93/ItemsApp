@@ -22,6 +22,7 @@
         },
             function (error) {
                 console.log('Oops! Something went wrong while saving the data.')
+                alert('Oops! Something went wrong while saving the data. Error message - ' + error.message);
             })
     };
 
@@ -37,6 +38,7 @@
             getAll();
         }, function (error) {
             console.log('Oops! Something went wrong while updating the data.')
+            //alert('Failed while updating the data. Error message - ' + error.message);
         })
     };
 
