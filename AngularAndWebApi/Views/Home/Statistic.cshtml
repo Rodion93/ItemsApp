@@ -3,5 +3,43 @@
     ViewBag.Title = "Statistic";
 }
 
-<h2>Statistic</h2>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    @*<script src="~/Scripts/bootstrap.js"></script>*@
+    <script src="~/Content/bootstrap.css"></script>
+    <script src="~/Content/Site.css"></script>
+    <script src="~/AngularPart/Statistic/Module.js"></script>
+    <script src="~/AngularPart/Statistic/Service.js"></script>
+    <script src="~/AngularPart/Statistic/Controller.js"></script>
+    <script src="~/AngularPart/Pagination/dirPagination.js"></script>
+</head>
 
+<body data-ng-app="StatisticApi" ng-controller="StatController">
+
+    <h2 align="center">Statistic</h2>
+
+    </br>
+
+    <div class="row" id="tblStat">
+        <table class="table table-bordered table-striped" align="center">
+            <tr>
+                <th>Item Type</th>
+                <th>Count</th>
+            </tr>
+            <tbody id="myTable">
+                <tr data-dir-paginate="item in items | itemsPerPage:3:'myPagedItems'" data-pagination-id="myPagedItems">
+                    <td>{{item.Name}}</td>
+                    <td>{{item.Count}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <dir-pagination-controls data-pagination-id="myPagedItems" 
+                             max-size="50"
+                             direction-links="true"
+                             boundary-links="true">
+    </dir-pagination-controls>
+</body>

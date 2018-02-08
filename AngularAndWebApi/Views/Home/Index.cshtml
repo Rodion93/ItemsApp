@@ -13,21 +13,14 @@
     <script src="~/AngularPart/Module.js"></script>
     <script src="~/AngularPart/Service.js"></script>
     <script src="~/AngularPart/Controller.js"></script>
+    <script src="~/AngularPart/Pagination/dirPagination.js"></script>
 </head>
 
 <body data-ng-app="APIModule" ng-controller="APIController">
+
     <h2 align="center">Items</h2>
 
     <div class="form-group">
-           @*<form name="myform">
-               <input class="form-control" placeholder="asda" name="myfield" ng-model="somefield" ng-minlength="1" required>
-               <span ng-show="myform.myfield.$error.required">Please enter something!</span>
-               <span ng-show="!myform.myfield.$error.required">Good boy!</span>
-
-               <input class="form-control" placeholder="asda" name="myfield" ng-model="somefield" ng-minlength="1" required>
-               <span ng-show="myform.myfield.$error.required">Please enter something!</span>
-               <span ng-show="!myform.myfield.$error.required">Good boy!</span>
-           </form>*@
         <table align="center">
             <tr>
                 <td><h4>add new item</h4></td>
@@ -42,25 +35,31 @@
                 <td><button class="btn btn-success" type="submit" ng-click="saveItem()">add item</button> </td>
             </tr>
         </table>
-
-
     </div>
 
     </br>
-    <div id="tblItems">
-        <table class="table table-bordered table-striped" align="center">
+
+    <div class="row" id="tblItems">
+        <table class="table table-bordered table-striped" align="center" >
             <tr>
                 <th>Item Name (Editable)</th>
                 <th>Item Type (Editable)</th>
                 <th></th>
             </tr>
-            <tbody>
-                <tr data-ng-repeat="item in items">
+            <tbody id="myTable">
+                <tr data-dir-paginate="item in items | itemsPerPage:4:'myPagedItems'" data-pagination-id="myPagedItems">
                     <td ng-blur="updName(item,$event)" ng-dblclick="makeEditable($event)">{{item.Name}}</td>
                     <td ng-blur="updType(item,$event)" ng-dblclick="makeEditable($event)">{{item.Type}}</td>
                     <td align="center"><button class="btn btn-danger" type="submit" ng-click="dltItem(item.Id)">Delete</button></td>
-                </tr>
+                </tr>   
             </tbody>
         </table>
+        
     </div>
+    <dir-pagination-controls data-pagination-id="myPagedItems" 
+                             max-size="50"
+                             direction-links="true"
+                             boundary-links="true">
+    </dir-pagination-controls>
+
 </body>
