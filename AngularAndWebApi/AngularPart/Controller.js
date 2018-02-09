@@ -1,8 +1,8 @@
-﻿app.controller('APIController', function ($scope, APIService) {
+﻿app.controller('ItemsController', function ($scope, ItemService) {
     getAll();
 
     function getAll() {
-        var servCall = APIService.getItems();
+        var servCall = ItemService.getItems();
         servCall.then(function (d) {
             $scope.items = d.data;
         },
@@ -16,13 +16,13 @@
             Name: $scope.name,
             Type: $scope.type
         };
-        var saveItem = APIService.saveItems(item);
+        var saveItem = ItemService.saveItems(item);
         saveItem.then(function (d) {
             getAll();
         },
             function (error) {
                 console.log('Oops! Something went wrong while saving the data.')
-                alert('Oops! Something went wrong while saving the data. Error message - ' + error.message);
+                alert('One of field is empty');
             })
     };
 
@@ -33,18 +33,17 @@
 
     $scope.updName = function (item, eve) {
         item.Name = eve.currentTarget.innerText;
-        var upd = APIService.updateItem(item);
+        var upd = ItemService.updateItem(item);
         upd.then(function (d) {
             getAll();
         }, function (error) {
             console.log('Oops! Something went wrong while updating the data.')
-            //alert('Failed while updating the data. Error message - ' + error.message);
         })
     };
 
     $scope.updType = function (item, eve) {
         item.Type = eve.currentTarget.innerText;
-        var upd = APIService.updateItem(item);
+        var upd = ItemService.updateItem(item);
         upd.then(function (d) {
             getAll();
         }, function (error) {
@@ -53,11 +52,12 @@
     };
 
     $scope.dltItem = function (itemId) {
-        var dlt = APIService.deleteItem(itemId);
+        var dlt = ItemService.deleteItem(itemId);
         dlt.then(function (d) {
             getAll();
         }, function (error) {
             console.log('Oops! Something went wrong while deleting the data.')
+            alert('Failed while deleting the data. Error message - ' + error.message);
         })
     };
 }) 

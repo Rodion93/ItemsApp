@@ -16,7 +16,7 @@
     <script src="~/AngularPart/Pagination/dirPagination.js"></script>
 </head>
 
-<body data-ng-app="APIModule" ng-controller="APIController">
+<body data-ng-app="ItemModule" ng-controller="ItemsController">
 
     <h2 align="center">Items</h2>
 
@@ -27,10 +27,10 @@
             </tr>
             <tr >
                 <td>
-                    <input class="form-control" id="name" placeholder="Enter name" data-ng-model="name" required/>
+                    <input class="form-control" id="name" placeholder="item name" data-ng-model="name" required/>
                 </td>
                 <td>
-                    <input class="form-control" id="type" placeholder="Enter type" data-ng-model="type" required/>
+                    <input class="form-control" id="type" placeholder="item type" data-ng-model="type" required/>
                 </td>
                 <td><button class="btn btn-success" type="submit" ng-click="saveItem()">add item</button> </td>
             </tr>
@@ -42,8 +42,8 @@
     <div class="row" id="tblItems">
         <table class="table table-bordered table-striped" align="center" >
             <tr>
-                <th>Item Name (Editable)</th>
-                <th>Item Type (Editable)</th>
+                <th>Item Name (double click on field to edit)</th>
+                <th>Item Type (double click on field to edit)</th>
                 <th></th>
             </tr>
             <tbody id="myTable">
@@ -56,7 +56,7 @@
         </table>
         
     </div>
-    <dir-pagination-controls data-pagination-id="myPagedItems" 
+    <dir-pagination-controls align="center" data-pagination-id="myPagedItems" 
                              max-size="50"
                              direction-links="true"
                              boundary-links="true">

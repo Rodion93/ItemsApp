@@ -1,4 +1,4 @@
-﻿app.service('APIService', function ($http) {
+﻿app.service('ItemService', function ($http) {
     this.getItems = function () {
         return $http.get('http://localhost:51020/api/items');
     }

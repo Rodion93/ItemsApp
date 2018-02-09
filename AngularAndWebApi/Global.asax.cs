@@ -9,8 +9,12 @@ using System.Web.Routing;
 
 namespace AngularAndWebApi
 {
+    /// <inheritdoc />
     public class WebApiApplication : System.Web.HttpApplication
     {
+        /// <summary>
+        /// Start of application
+        /// </summary>
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

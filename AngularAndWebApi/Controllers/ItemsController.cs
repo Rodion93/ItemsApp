@@ -12,17 +12,27 @@ using AngularAndWebApi.Models;
 
 namespace AngularAndWebApi.Controllers
 {
+    /// <summary>
+    /// Items Controller. Allow to add, edit, delete and get items
+    /// </summary>
     public class ItemsController : ApiController
     {
         private ApplicationContext db = new ApplicationContext();
 
-        // GET: api/Items
+        /// <summary>
+        /// Get all items
+        /// </summary>
+        /// <returns>IQueryable collection of items</returns>
         public IQueryable<Item> GetItems()
         {
             return db.Items;
         }
 
-        // GET: api/Items/5
+        /// <summary>
+        /// Get one item by Id
+        /// </summary>
+        /// <param name="id">Uniq item identifier</param>
+        /// <returns>ContentResult(item)</returns>
         [ResponseType(typeof(Item))]
         public IHttpActionResult GetItem(int id)
         {
@@ -35,7 +45,11 @@ namespace AngularAndWebApi.Controllers
             return Ok(item);
         }
 
-        // PUT: api/Items/5
+        /// <summary>
+        /// Update item
+        /// </summary>
+        /// <param name="item">Edited item</param>
+        /// <returns>HttpStatusCode.NoContent</returns>
         [ResponseType(typeof(void))]
         public IHttpActionResult PutItem(Item item)
         {
@@ -62,7 +76,11 @@ namespace AngularAndWebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Items
+        /// <summary>
+        /// Create item
+        /// </summary>
+        /// <param name="item">New item</param>
+        /// <returns>Redirect</returns>
         [ResponseType(typeof(Item))]
         public IHttpActionResult PostItem(Item item)
         {
@@ -77,7 +95,11 @@ namespace AngularAndWebApi.Controllers
             return CreatedAtRoute("DefaultApi", new { id = item.Id }, item);
         }
 
-        // DELETE: api/Items/5
+        /// <summary>
+        /// Delete item
+        /// </summary>
+        /// <param name="id">Uniq Identifyer</param>
+        /// <returns>Item</returns>
         [ResponseType(typeof(Item))]
         public IHttpActionResult DeleteItem(int id)
         {
@@ -93,6 +115,7 @@ namespace AngularAndWebApi.Controllers
             return Ok(item);
         }
 
+        /// <inheritdoc />
         protected override void Dispose(bool disposing)
         {
             if (disposing)

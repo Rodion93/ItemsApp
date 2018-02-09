@@ -7,8 +7,15 @@ using System.Web.Http.Cors;
 
 namespace AngularAndWebApi
 {
+    /// <summary>
+    /// WebApi Config
+    /// </summary>
     public static class WebApiConfig
     {
+        /// <summary>
+        /// Register all routes, services, configuration, etc.
+        /// </summary>
+        /// <param name="config">Http config</param>
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services

@@ -3,9 +3,16 @@ using System.Web.Optimization;
 
 namespace AngularAndWebApi
 {
+    /// <summary>
+    /// Bundle Config
+    /// </summary>
     public class BundleConfig
     {
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
+        /// <summary>
+        /// Register all bundles
+        /// </summary>
+        /// <param name="bundles">Collection of bundles</param>
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
